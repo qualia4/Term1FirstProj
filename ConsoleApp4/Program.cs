@@ -52,10 +52,22 @@ while (true)
         }
         case "6":
         {
+            Console.WriteLine("Enter line and index:");
+            var coordinates = Console.ReadLine().Split(' ');
+            var line = int.Parse(coordinates[0]);
+            var index = int.Parse(coordinates[1]);
+            Console.WriteLine("Enter text to insert:");
+            var newText = Console.ReadLine();
+            string lineToChange = text[line];
+            string firstPart = Substring(lineToChange, 0, index);
+            string secPart = Substring(lineToChange, index, lineToChange.Length);
+            text[line] = firstPart + newText + secPart;
             break;
         }
         case "7":
         {
+            Console.WriteLine("Enter text to search:");
+            var textToSearch = Console.ReadLine();
             break;
         }
     }
@@ -77,4 +89,14 @@ void PrintText()
     {
         Console.WriteLine(text[i]);
     }
+}
+
+string Substring(string text, int start, int end)
+{
+    string result = "";
+    for (int i = start; i < end; i++)
+    {
+        result += text[i];
+    }
+    return result;
 }
