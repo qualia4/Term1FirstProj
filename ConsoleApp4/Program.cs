@@ -68,6 +68,21 @@ while (true)
         {
             Console.WriteLine("Enter text to search:");
             var textToSearch = Console.ReadLine();
+            var index = 0;
+            var lengthOfSearch = textToSearch.Length;
+            foreach (var str in text)
+            {
+                for (int i = 0, j = lengthOfSearch;
+                     i < str.Length && j < str.Length + 1; i++, j++)
+                {
+                    if (Substring(str, i, j) == textToSearch)
+                    {
+                        Console.Write("[" + index + ";" + i + "] ");
+                    }
+                }
+                index++;
+            }
+            Console.WriteLine();
             break;
         }
     }
